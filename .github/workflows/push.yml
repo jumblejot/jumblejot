@@ -1,0 +1,19 @@
+name: Push to GitHub Pages
+
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+    check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Push
+              run: |
+                git clone https://github.com/jumblejot/jumblejot
+                git clone https://github.com/jumblejot/jumblejot.github.io
+                cd jumblejot.github.io
+                cp -r ../jumblejot/**/* .
+                git add .
+                git commit -m "Pull in changes"
+                git push
