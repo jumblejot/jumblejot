@@ -9,13 +9,17 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
+              with:
+               path: /home/runner/work/jumblejot
             - uses: actions/checkout@v2
               with:
                 repository: jumblejot/jumblejot.github.io
+                path: /home/runner/work/jumblejot.github.io
             - uses: fregante/setup-git-user@v1
 
             - name: Push
               run: |
+                cd /home/runner/work
                 ls
                 rsync -r ./jumblejot/ ./jumblejot.github.io --exclude=.git
                 cd jumblejot.github.io
