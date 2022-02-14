@@ -8,19 +8,12 @@ jobs:
     check:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-              with:
-               path: /home/runner/work/jumblejot/jumblejot/a
-            - uses: actions/checkout@v2
-              with:
-                repository: jumblejot/jumblejot.github.io
-                path: /home/runner/work/jumblejot/jumblejot/b
-
             - name: Push
               run: |
                 git config --global user.name "github-actions[bot]"
                 git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                cd /home/runner/work/jumblejot/jumblejot
+                git clone https://${{ github.token }}@github.com/jumblejot/jumblejot a
+                git clone https://${{ github.token }}@github.com/jumblejot/jumblejot.github.io b
                 ls
                 rsync -r ./a/ ./b --exclude=.git
                 cd b
