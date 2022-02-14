@@ -13,8 +13,9 @@ jobs:
         steps:
             - name: Push
               run: |
-                git config --global user.name "github-actions[bot]"
-                git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                origin=${GITHUB_SERVER_URL:-${GITHUB_URL:-https://github.com}}
+                token64=$(printf "%s""x-access-token:$token" | base64)
+                git config --global http.${origin}/.extraheader "AUTHORIZATION: basic $token64"
                 git clone https://${{ github.token }}@github.com/jumblejot/jumblejot a
                 git clone https://${{ github.token }}@github.com/jumblejot/jumblejot.github.io b
                 ls
