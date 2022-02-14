@@ -8,10 +8,10 @@ jobs:
     check:
         runs-on: ubuntu-latest
         steps:
+            - uses: fregante/setup-git-user@v1
+
             - name: Push
               run: |
-                git config --global user.name github-actions
-                git config --global user.email github-actions@github.com
                 git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/jumblejot/jumblejot
                 git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/jumblejot/jumblejot.github.io
                 ls
