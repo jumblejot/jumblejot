@@ -14,6 +14,7 @@ jobs:
                 git config --global user.email github-actions@github.com
                 git clone https://github.com/jumblejot/jumblejot
                 git clone https://github.com/jumblejot/jumblejot.github.io
+                ls
                 cd jumblejot.github.io
                 cp -r ../jumblejot/**/* .
                 git add .
