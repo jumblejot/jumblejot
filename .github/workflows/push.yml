@@ -10,19 +10,19 @@ jobs:
         steps:
             - uses: actions/checkout@v2
               with:
-               path: /home/runner/work/jumblejot
+               path: /home/runner/work/jumblejot/jumblejot/a
             - uses: actions/checkout@v2
               with:
                 repository: jumblejot/jumblejot.github.io
-                path: /home/runner/work/jumblejot.github.io
+                path: /home/runner/work/jumblejot/jumblejot/b
             - uses: fregante/setup-git-user@v1
 
             - name: Push
               run: |
-                cd /home/runner/work
+                cd /home/runner/work/jumblejot/jumblejot
                 ls
-                rsync -r ./jumblejot/ ./jumblejot.github.io --exclude=.git
-                cd jumblejot.github.io
+                rsync -r ./a/ ./b --exclude=.git
+                cd b
                 git add .
                 git commit -m "Pull in changes"
                 git push
