@@ -8,12 +8,14 @@ jobs:
     check:
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v2
+            - uses: actions/checkout@v2
+              with:
+                repository: jumblejot/jumblejot.github.io
             - uses: fregante/setup-git-user@v1
 
             - name: Push
               run: |
-                git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/jumblejot/jumblejot
-                git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/jumblejot/jumblejot.github.io
                 ls
                 rsync -r ./jumblejot/ ./jumblejot.github.io --exclude=.git
                 cd jumblejot.github.io
