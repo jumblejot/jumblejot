@@ -12,8 +12,8 @@ jobs:
               run: |
                 git config --global user.name github-actions
                 git config --global user.email github-actions@github.com
-                git clone https://github.com/jumblejot/jumblejot
-                git clone https://github.com/jumblejot/jumblejot.github.io
+                git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/jumblejot/jumblejot
+                git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/jumblejot/jumblejot.github.io
                 ls
                 rsync -r ./jumblejot/ ./jumblejot.github.io --exclude=.git
                 cd jumblejot.github.io
