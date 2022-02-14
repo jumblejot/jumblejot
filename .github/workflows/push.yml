@@ -15,10 +15,11 @@ jobs:
               with:
                 repository: jumblejot/jumblejot.github.io
                 path: /home/runner/work/jumblejot/jumblejot/b
-            - uses: fregante/setup-git-user@v1
 
             - name: Push
               run: |
+                git config --global user.name "github-actions[bot]"
+                git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
                 cd /home/runner/work/jumblejot/jumblejot
                 ls
                 rsync -r ./a/ ./b --exclude=.git
