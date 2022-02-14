@@ -15,8 +15,8 @@ jobs:
                 git clone https://github.com/jumblejot/jumblejot
                 git clone https://github.com/jumblejot/jumblejot.github.io
                 ls
+                rsync -r ./jumblejot/ ./jumblejot.github.io --exclude=.git
                 cd jumblejot.github.io
-                cp -r ../jumblejot/* .
                 git add .
                 git commit -m "Pull in changes"
                 git push
