@@ -10,6 +10,8 @@ jobs:
         steps:
             - name: Push
               run: |
+                git config user.name github-actions
+                git config user.email github-actions@github.com
                 git clone https://github.com/jumblejot/jumblejot
                 git clone https://github.com/jumblejot/jumblejot.github.io
                 cd jumblejot.github.io
